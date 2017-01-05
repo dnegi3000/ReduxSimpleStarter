@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-
-export default class App extends Component {
+import MegaMenu from './megamenu';
+import Country from './country';
+ class App extends Component {
   render() {
     return (
-      <div>React simple starter</div>
+      <div>
+        Main Page
+        <Country name="Country Comp"/>
+        <MegaMenu name="MegaMenu"/>
+      </div>
     );
   }
 }
+export default App;
