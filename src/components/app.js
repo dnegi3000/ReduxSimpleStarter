@@ -5,7 +5,6 @@ import Country from './country';
   render() {
     return (
       <div>
-        Main Page
         <Country name="Country Comp"/>
         <MegaMenu name="MegaMenu"/>
       </div>
