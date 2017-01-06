@@ -1,31 +1,26 @@
 import React, {Component} from 'React';
-
+/**
+**/
 class Country extends Component {
-
-    
-   change(event){
-        console.log('============change');
-       console.log(this);
-   }
-    
   render(){
         console.log('render...........');
         console.log(this);
         console.log(this.state);
         console.log();
-    var toRender = (
-        <div>
-        <input type="text" defaultValue={this.state.name} onChange={(e)=>{
-             console.log('Change state');
-             console.log('printing this inside thefunction');
-             console.log(this);
-             this.setState({name: e.target.value});
-        }}/>
+        var toRender = (
+            <div>
+              <!--<input type="text" defaultValue={this.state.name} onChange={(e)=>{
+                   console.log('Change state');
+                   console.log('printing this inside thefunction');
+                   console.log(this);
+                   this.setState({name: e.target.value});
+                }}
+              -->
 
-        <input type="tex1t" defaultValue={this.state.name} onChange={this.change.bind(this)}
-                />  
-            <br/>
-            Hello, {this.state.name}
+            <input type="text" defaultValue={this.state.name} onChange={this.change.bind(this)}>
+            </input>
+
+               <h1>Hello, {this.state.name}</h1>
             </div>
 
         )
@@ -33,7 +28,14 @@ class Country extends Component {
     return toRender;
     };
 
-  
+    /**
+    * Change event
+    */
+    change(event){
+           console.log('============change');
+           console.log(this);
+           this.setState({name: event.target.value});
+       }
 
 
 
