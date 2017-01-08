@@ -1,6 +1,15 @@
 import React, {Component} from 'React';
+/**<input type="text" defaultValue={this.state.name} onChange={(e)=>{
+                   console.log('Change state');
+                   console.log('printing this inside thefunction');
+                   console.log(this);
+                   this.setState({name: e.target.value});
+                }}
+              -->
+              **/
 /**
 **/
+
 class Country extends Component {
   render(){
         console.log('render...........');
@@ -9,19 +18,11 @@ class Country extends Component {
         console.log();
         var toRender = (
             <div>
-              <!--<input type="text" defaultValue={this.state.name} onChange={(e)=>{
-                   console.log('Change state');
-                   console.log('printing this inside thefunction');
-                   console.log(this);
-                   this.setState({name: e.target.value});
-                }}
-              -->
-
-            <input type="text" defaultValue={this.state.name} onChange={this.change.bind(this)}>
-            </input>
-
-               <h1>Hello, {this.state.name}</h1>
+              <input type="text" defaultValue={this.state.name} onChange={this.change.bind(this)}>
+              </input>
+              <h1>Hello, {this.state.name}</h1>
             </div>
+
 
         )
 
