@@ -1,24 +1,30 @@
 import React from  'React';
 
 function Task(props){
-
-		if (props.todo)
-		{
-			return (<Div>Task List</Div>);
-		}else 
+	console.log('TASK COMPONNENT RENDERING............');
+	
+	console.log(props);
+		if (props.tasks.todo)
 		{
 
 		return (
 			<div>
 				Task List  :
-					props.todo.map((todoitem)=>{
-
-						<li></li>
+					{props.tasks.todo.map((todoitem)=>{
+						return (<li>
+						<input type="checkbox"> {todoitem.taskName} </input>	
+						 </li>)
+						
 					}
 					
-					);
+					)}
+
 			</div>
 		);	
+
+		}else 
+		{
+			return (<Div>Task List</Div>);
 
 		}
 }

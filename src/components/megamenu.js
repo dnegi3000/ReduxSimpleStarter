@@ -21,7 +21,7 @@ constructor(props){
     this.state = {  
         category: {},
         currentValue:'',
-        todo : []
+        todo : [{}]
     }
 }
 
@@ -52,13 +52,13 @@ render(){
       </button>
       </form>
 
-    <Task  tasks={this.State}>
+    <Task  tasks={this.state}>
     </Task>
 
 
 
 
-    
+
     <div className="dropdown">
     <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Dropdown
