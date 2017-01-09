@@ -2,7 +2,6 @@ import React from  'React';
 
 function Task(props){
 	console.log('TASK COMPONNENT RENDERING............');
-	
 	console.log(props);
 		if (props.tasks.todo)
 		{
@@ -14,16 +13,13 @@ function Task(props){
 						return (<li>
 						<input type="checkbox"> {todoitem.taskName} </input>	
 						 </li>)
-						
 					}
 					
 					)}
 
 			</div>
 		);	
-
-		}else 
-		{
+		}else {
 			return (<Div>Task List</Div>);
 
 		}
