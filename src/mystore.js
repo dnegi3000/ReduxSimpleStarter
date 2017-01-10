@@ -8,5 +8,5 @@ import App from './components/app';
 import MegaMenu from './components/megamenu'
 
 //const createStoreWithMiddleware = applyMiddleware()(createStore);
-console.log(store);
+
 ReactDOM.render(<App/>,document.querySelector('.root'));
