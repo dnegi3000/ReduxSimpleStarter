@@ -5,4 +5,4 @@ var state = {
   product:{} 
  }
 
- export default state;
+ export default state1;
