@@ -1,24 +1,23 @@
 import React , { Component } from 'react';
-import store from '../reducers/index';
-import axios from 'axios';
+import  MenuHelper from './menuhelper'
+
+
 class  MegaMenu extends Component {
 
-componentWillMount(){
-	console.log(axios);
-	axios.get('http://5845624ae2938412004cf686.mockapi.io/sampleapi/megamenu').then(function (response) {
-		    console.log(response.data);
-		    
-  		}).catch(function (error) {
-    console.log(error);
-  });
-}
 
 render(){ 
+	console.log('.........................');
+	console.log(this.props);
+	console.log('.........................');
+	if (this.props && this.props.state)
+		{
+			console.log(this.props.state.menu);
+		}
 
 	return (
-		<div>
-		    is the Mega menu component
-		</div>
+		  <div>MENu
+		    <MenuHelper menuDetail={this.props.state.menu}/>	
+			</div>
 		);
 }
 

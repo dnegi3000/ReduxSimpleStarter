@@ -2,6 +2,16 @@ import { createStore ,combineReducers} from 'redux';
 
 const reducerMenu = function (state ={},action){
  	console.log("inside reducerMenu function ");
+ 	if (action.TYPE='LOAD_INITIAL')
+ 	{
+ 		console.log(action);
+ 		let newState ={...state, menu:action.data};
+ 		console.log("new State");
+ 		console.log(newState);
+ 		return newState;
+ 	}
+ 	
+ 	console.log(state);
 	return state;
 }
 
@@ -19,7 +29,7 @@ const reducer = combineReducers({
 	cart 	: reducerCart ,
 	product :prodReducer 
 });
-const store = createStore(reducer, {});
+let store = createStore(reducer, {});	
 
 
 export default store;
