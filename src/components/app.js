@@ -5,6 +5,7 @@ import {connect } from 'react-redux';
 
 import loadMenu from '../actions/index';
 import axios from 'axios';
+import data from '../data';
 
 
 class App extends Component {
@@ -20,13 +21,11 @@ callAxios(){
 
 	}).catch((error)=>{
 		console.log(error);
-		this.props.loadMenu(
-				{data:{topLevelCategories:[{displayName:"test"},{displayName:"this is a cat"}]}}
-			);		
+		this.props.loadMenu(JSON.parse(this.props.data));		
 	});
 	}else {
 		
-	this.props.loadMenu({data:{topLevelCategories:[{displayName:"test"},{displayName:"this is a cat"}]}});
+	this.props.loadMenu(JSON.parse(this.props.data));
 	}
 
 
@@ -60,6 +59,7 @@ let mapStateToProps = (state)=>{
 	console.log(state);
 	return {
 		menu: state.menu,
+		data
 
 
 
