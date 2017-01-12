@@ -2,17 +2,26 @@ import { createStore ,combineReducers} from 'redux';
 
 const reducerMenu = function (state ={},action){
  	console.log("inside reducerMenu function ");
- 	if (action.TYPE='LOAD_INITIAL')
+
+ 	 console.log(state);
+ 	if (action.type='LOAD_INITIAL' && action.data)
  	{
- 		console.log(action);
- 		let newState ={...state, menu:action.data};
+ 		console.log("inside the reducer with action LOAD_INITIAL");
+ 		console.log(action.data);
+ 		let newState ={...action.data};
  		console.log("new State");
  		console.log(newState);
+ 		console.log("returning with new state");
  		return newState;
+ 			
+ 		
+ 	}else {
+ 		console.log("returning with old state");
+ 		
+ 		return state ;
  	}
- 	
- 	console.log(state);
-	return state;
+
+ 
 }
 
 const reducerCart = function (state ={},action){
@@ -29,7 +38,7 @@ const reducer = combineReducers({
 	cart 	: reducerCart ,
 	product :prodReducer 
 });
-let store = createStore(reducer, {});	
+//let store = createStore(reducer);	
 
 
-export default store;
+export default reducer;

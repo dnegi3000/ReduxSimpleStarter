@@ -1,20 +1,17 @@
-import React from 'react';
+import React,{ Component } from 'react';
 
 
-var  MenuHelper = function(props ){
+class MenuHelper extends  Component {
 
+render(){
 	console.log("helper..");
-	console.log(props.menuDetail);
-	
-	if(props.menuDetail.topLevelCategories){
-			return topLevelCategories.forEach((cat)=>{
-			<link >console.log(cat.displayName)</link>;
-		} );
-			
-	}else {
-		return <h1>menu</h1>
+	console.log(this.props.detail);
+	if(this.props.detail)
+	{
+		return (<a>{this.props.detail.displayName}</a>);
 	}
-
+		
+ } 
 }
 
 export default MenuHelper;

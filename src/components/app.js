@@ -2,39 +2,73 @@ import React, { Component } from 'react';
 import MegaMenu from './megamenu';
 import Country from './country';
 import {connect } from 'react-redux';
-import store from '../reducers/index';
-import axios from 'axios';
-import loadMenu from '../actions/index';
 
+import loadMenu from '../actions/index';
+import axios from 'axios';
 
 
 class App extends Component {
 
- constructor(props){
-	super(props);
-	console.log(axios);
-	axios.get('http://5845624ae2938412004cf686.mockapi.io/sampleapi/megamenu').then(function (response) {
-		    console.log(response.data);
-		    store.dispatch(loadMenu(response.data));
+callAxios(){
+	
+	if (true ){
+	console.log('calling using axios..............');
+	let promise =axios.get('http://5845624ae2938412004cf686.mockapi.io/sampleapi/megamenu');
+	promise.then((res)=>{
+			console.log("Calling loadMenu from App constructor.............");
+		this.props.loadMenu(res);
 
-  		}).catch(function (error) {
-    console.log(error);
-  });
+	}).catch((error)=>{
+		console.log(error);
+		this.props.loadMenu(
+				{data:{topLevelCategories:[{displayName:"test"},{displayName:"this is a cat"}]}}
+			);		
+	});
+	}else {
+		
+	this.props.loadMenu({data:{topLevelCategories:[{displayName:"test"},{displayName:"this is a cat"}]}});
+	}
 
 
 }
 
-  render() {
-    return (
-   			<div>
-        	  <MegaMenu  state={store.getState()}/>
- 	     	</div>
-   		 );
-  }
+componentWillMount(){
+	this.callAxios();
 }
 
-mapStateToProps(){
+
+render() {
+    	console.log("App render ............");
+    	
+    	console.log(this.props);
+    	if (this.props.menu.topLevelCategories){
+    	
+    		return (
+    			<div>
+    			<MegaMenu  menuDetail={this.props.menu.topLevelCategories}/>
+    		 	</div>);
+	
+    	}else {
+    		return <li>empty</li>
+    	}
+
+       	  }
+}
+
+let mapStateToProps = (state)=>{
+	console.log(".state.....");
+	console.log(state);
+	return {
+		menu: state.menu,
+
+
+
+	};
 	
 }
-connect(mapStateToProps, [mapDispatchToProps], [mergeProps], [options])
-export default App;
+
+//connect(mapStateToProps, [mapDispatchToProps], [mergeProps], [options])
+export default connect(mapStateToProps,{loadMenu})(App);
+
+//export default App;
+	

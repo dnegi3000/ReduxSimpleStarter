@@ -1,10 +1,10 @@
-
-var loadMenu= (payload)=>{
+var loadMenu= (res)=>{
 console.log('called load Menu..............');
-console.log(payload);
-return {
+console.log(res);
+return  {
 	type:'LOAD_INITIAL',
-	data:payload
-	}
+	data:res.data
+	};
+
 }
 export default loadMenu;
