@@ -10,21 +10,27 @@ import data from '../data';
 
 class App extends Component {
 
+localLoadMenu(res){
+	console.log("inside localLoadMenu");
+	this.props.loadMenu(res);
+}
+constructor(){
+	super();
+	this.localLoadMenu = this.localLoadMenu.bind(this);
+
+}
+
 callAxios(){
-	
+
 	if (true ){
 	console.log('calling using axios..............');
 	let promise =axios.get('http://5845624ae2938412004cf686.mockapi.io/sampleapi/megamenu');
-	promise.then((res)=>{
-			console.log("Calling loadMenu from App constructor.............");
-		this.props.loadMenu(res);
-
-	}).catch((error)=>{
-		console.log(error);
-		this.props.loadMenu(JSON.parse(this.props.data));		
+	promise.then(this.localLoadMenu).catch((error)=>{
+		console.log("here inside error "+error);
+		//this.props.loadMenu(JSON.parse(this.props.data));
 	});
 	}else {
-		
+
 	this.props.loadMenu(JSON.parse(this.props.data));
 	}
 
@@ -38,15 +44,15 @@ componentWillMount(){
 
 render() {
     	console.log("App render ............");
-    	
+
     	console.log(this.props);
     	if (this.props.menu.topLevelCategories){
-    	
+
     		return (
-    			<div>
+    			<div className="container">
     			<MegaMenu  menuDetail={this.props.menu.topLevelCategories}/>
     		 	</div>);
-	
+
     	}else {
     		return <li>empty</li>
     	}
@@ -54,21 +60,14 @@ render() {
        	  }
 }
 
-let mapStateToProps = (state)=>{
-	console.log(".state.....");
-	console.log(state);
+let mapStateToProps = ({menu})=>{
 	return {
-		menu: state.menu,
-		data
-
-
-
+		menu,data
 	};
-	
+
 }
 
 //connect(mapStateToProps, [mapDispatchToProps], [mergeProps], [options])
 export default connect(mapStateToProps,{loadMenu})(App);
 
 //export default App;
-	
