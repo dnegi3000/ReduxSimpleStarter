@@ -1,10 +1,11 @@
-import React from 'React';
+import React from 'react';
 
  function SubCat(props){
    console.log(props);
     return(
         <div style={{display : 'inline-block'}}>
-            <button key={props.subCategory.id} className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            <button key={props.subCategory.id} className="btn btn-primary dropdown-toggle"
+            type="button" data-toggle="dropdown">
                   {props.subCategory.displayName}
                 <span className="caret"></span>
             </button>
